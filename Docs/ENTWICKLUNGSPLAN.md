@@ -12,23 +12,31 @@
 
 ### Core Features
 
-1. **BMI Calculator & Tracker**
-   - Input of height and weight
-   - Automatic BMI calculation
-   - Historical display of BMI development
+1. **User System**
+   - User registration and login (email + password)
+   - Personal profile (name, gender, age, height)
+   - Authentication (JWT for sessions)
+   - Optional: 2FA or SSO (social media) later
 
-2. **Smart Nutrition Tracking**
+2. **BMI Calculator & Tracker**
+   - Input of height, weight, gender, age (from user profile)
+   - Automatic BMI calculation (weight / height², adjusted for gender/age)
+   - BMI categories (underweight, normal, overweight, obese)
+   - Historical BMI tracking per user
+
+3. **Smart Nutrition Tracking**
    - Search for foods (e.g., "Apple", "Big Mac", "Spaghetti Carbonara")
    - Portion size selection
    - Automatic calorie and macronutrient calculation
-   - Daily overview and calorie budget
+   - Daily overview and personalized calorie budget (based on user profile)
+   - User-specific calorie logs and goals
 
-3. **Product Database**
+4. **Product Database**
    - Integration of food databases (e.g., OpenFoodFacts API, USDA FoodData Central)
    - Create custom products and recipes
    - Barcode scanner for quick product capture
 
-4. **Progress Tracking**
+5. **Progress Tracking**
    - Weight progress (charts)
    - Body fat tracking (optional)
    - Goal setting and milestones
@@ -36,9 +44,16 @@
 
 ## 🎯 Project Goals
 
-- **Short-term**: Functional web app with basic features (BMI, calorie tracking)
+- **Short-term**: Functional web app with user system, BMI calculation, and basic calorie tracking
 - **Medium-term**: Integration of food database and advanced tracking features
 - **Long-term**: Native iOS app with offline functionality
+
+## 👤 User Management
+
+- **Authentication**: Password-based login/register, JWT for secure sessions. Optional 2FA or SSO (e.g., Google, Apple) later.
+- **Profile**: Personal data (name, email, gender, age, height) for BMI and calorie calculations.
+- **Data Privacy**: Self-hosted, user data stored securely in MongoDB.
+- **Integration**: Profile linked to all tracking (BMI, calories, progress) for personalized experience.
 
 ## 🛠 Technology Stack
 
@@ -89,33 +104,45 @@ We start with a **web app (React)** optimized for mobile.
 ## 📅 Development Plan (Phases)
 
 ### Phase 1: MVP Web App & Infrastructure - 2-3 Weeks
-**Goal**: Functional, responsive web app hosted on the home server
+**Goal**: Functional, responsive web app with user system and BMI calculation hosted on the home server
 
 - [ ] **Infrastructure**:
     - [ ] Home Server Setup (Docker, Node.js, MongoDB)
     - [ ] Ensure Port-Forwarding / Remote Access
+- **User System**:
+    - [ ] User Registration/Login (email + password)
+    - [ ] Personal Profile (name, gender, age, height)
+    - [ ] Authentication (JWT for sessions)
+    - [ ] Database schema for users (MongoDB)
+- **BMI Calculation**:
+    - [ ] Input form: Height, weight, gender, age (from profile)
+    - [ ] BMI formula: weight / (height^2), adjusted for gender/age if needed
+    - [ ] Display BMI with category (underweight, normal, overweight)
+    - [ ] Save BMI history per user
 - **Backend (API)**:
-    - [ ] Set up Express server
-    - [ ] Define MongoDB schema for user/tracking
-    - [ ] Create API endpoints for BMI/weight
+    - [ ] Express Server setup
+    - [ ] MongoDB schema for users and BMI tracking
+    - [ ] API endpoints for user auth, profile, and BMI
 - **Frontend (React Web)**:
     - [ ] Initialize React project with Vite
-    - [ ] Screen: BMI Calculator
-    - [ ] Screen: Weight Input
+    - [ ] Screens: Login/Register, Profile, BMI Calculator
     - [ ] Mobile-First Styling (CSS/Tailwind)
 
-**Deliverable**: App accessible in browser on iPhone, data on home server.
+**Deliverable**: User can register, create profile, and calculate BMI. Data stored on home server.
 
 ### Phase 2: The Database & Search - 2-3 Weeks
-**Goal**: Smart food tracking
+**Goal**: Smart food tracking, user-specific
 
-- [ ] Integrate OpenFoodFacts API
+- [ ] **User-Specific Calorie Tracking**:
+    - [ ] Personal calorie goals (calculated from profile: e.g., BMR/TDEE based on age, gender, height, weight)
+    - [ ] Daily overview per user (calories vs. personal budget)
+    - [ ] History: Weight, BMI, calorie logs per user
+- [ ] Integration OpenFoodFacts API
 - [ ] Product search and detail view
 - [ ] Save consumed foods (calorie log)
-- [ ] Daily overview (calories vs. budget)
 - [ ] **Barcode Scanner (Web)**: Integrate `QuaggaJS` or `html5-qrcode`
 
-**Deliverable**: Track menus and products.
+**Deliverable**: Track menus and products, personalized per user.
 
 ### Phase 3: PWA Features & Visualization - 1-2 Weeks
 **Goal**: "App feeling" on iPhone
