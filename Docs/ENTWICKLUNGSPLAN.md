@@ -78,8 +78,8 @@ We start with a **web app (React)** optimized for mobile.
 - **Testing**: Jest, Pytest
 
 ### APIs & Data Sources
-- **OpenFoodFacts API** (free, large product database)
-- **USDA FoodData Central API** (free, US-focused)
+- **OpenFoodFacts API** (primary, free, EU-focused for European nutrition tables)
+- **USDA FoodData Central API** (optional, free, US-focused – selectable by location)
 - **Nutritionix API** (partially free)
 - **Edamam Nutrition API** (freemium)
 
@@ -133,13 +133,12 @@ We start with a **web app (React)** optimized for mobile.
 ### Phase 2: The Database & Search - 2-3 Weeks
 **Goal**: Smart food tracking, user-specific
 
-- [ ] **User-Specific Calorie Tracking**:
-    - [ ] Personal calorie goals (calculated from profile: e.g., BMR/TDEE based on age, gender, height, weight)
-    - [ ] Daily overview per user (calories vs. personal budget)
-    - [ ] History: Weight, BMI, calorie logs per user
-- [ ] Integration OpenFoodFacts API
+- [ ] **Location-Based API Selection**: User can choose region (EU/US) in settings to switch between OpenFoodFacts and USDA
+- [ ] Integrate OpenFoodFacts API (primary)
 - [ ] Product search and detail view
 - [ ] Save consumed foods (calorie log)
+- [ ] Daily overview per user (calories vs. personal budget)
+- [ ] History: Weight, BMI, calorie logs per user
 - [ ] **Barcode Scanner (Web)**: Integrate `QuaggaJS` or `html5-qrcode`
 
 **Deliverable**: Track menus and products, personalized per user.
