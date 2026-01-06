@@ -60,13 +60,3 @@ See [ENTWICKLUNGSPLAN.md](Docs/ENTWICKLUNGSPLAN.md) for the detailed development
 2. Create a feature branch
 3. Commit changes
 4. Push and create a PR
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Design Inspiration
-
-- MyFitnessPal
-- Yazio
-- Lose It!

@@ -1,7 +1,7 @@
-# BodyPlan Project Instructions
+# MenuMate Project Instructions
 
 ## Project Context
-**BodyPlan** is a self-hosted health and fitness PWA (Progressive Web App) designed for tracking BMI, weight, and calories. The core philosophy is "Product-based tracking" (menus/items) rather than manually entering calories.
+**MenuMate** is a self-hosted health and fitness PWA (Progressive Web App) designed for tracking BMI, weight, and calories. The core philosophy is "Product-based tracking" (menus/items) rather than manually entering calories.
 
 ## Technology Stack
 - **Frontend**: React (Vite) + Mobile-First CSS (Tailwind/Standard). PWA capabilities (Manifest, Service Worker).
@@ -23,8 +23,8 @@
 
 ## Conventions
 - **Files**:
-  - `bodyplan-frontend/`: React application.
-  - `bodyplan-backend/`: Express API.
+  - `menumate-frontend/`: React application.
+  - `menumate-backend/`: Express API.
 - **Git**: Commit messages should be descriptive.
 
 ## Agent Behavior & Protocol

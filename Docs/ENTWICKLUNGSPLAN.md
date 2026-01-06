@@ -1,152 +1,153 @@
-# BodyPlan - Entwicklungsplan
+# MenuMate - Development Plan
 
-## 📋 Projektidee
+## 📋 Project Idea
 
-**BodyPlan** ist eine intelligente Gesundheits- und Fitness-App zur Unterstützung beim Gewichts- und Körperfettverlust durch:
+**MenuMate** is an intelligent health and fitness app designed to support weight and body fat loss through:
 
-- **BMI-Überwachung**: Kontinuierliche Verfolgung des Body-Mass-Index
-- **Intelligentes Kalorien-Tracking**: Eingabe von konkreten Lebensmitteln, Produkten und Menüs statt manueller Kalorienzahlen
-- **Produktdatenbank**: Automatische Kalorien- und Nährstoffberechnung basierend auf Lebensmittelnamen
-- **Mobile-First**: iOS-App für unterwegs, damit du nicht immer einen PC dabei haben musst
-- **Fortschrittsverfolgung**: Visualisierung deiner Erfolge und Entwicklung
+- **BMI Monitoring**: Continuous tracking of Body Mass Index
+- **Smart Calorie Tracking**: Input of specific foods, products, and menus instead of manual calorie numbers
+- **Product Database**: Automatic calorie and nutrient calculation based on food names
+- **Mobile-First**: iOS app for on-the-go use, so you don't always need a PC
+- **Progress Tracking**: Visualization of your successes and development
 
-### Kernfeatures
+### Core Features
 
-1. **BMI-Rechner & Tracker**
-   - Eingabe von Größe und Gewicht
-   - Automatische BMI-Berechnung
-   - Historische Darstellung der BMI-Entwicklung
+1. **BMI Calculator & Tracker**
+   - Input of height and weight
+   - Automatic BMI calculation
+   - Historical display of BMI development
 
-2. **Intelligentes Ernährungs-Tracking**
-   - Suche nach Lebensmitteln (z.B. "Apfel", "Big Mac", "Spaghetti Carbonara")
-   - Portionsgrößen-Auswahl
-   - Automatische Kalorien- und Makronährstoff-Berechnung
-   - Tagesübersicht und Kalorienbudget
+2. **Smart Nutrition Tracking**
+   - Search for foods (e.g., "Apple", "Big Mac", "Spaghetti Carbonara")
+   - Portion size selection
+   - Automatic calorie and macronutrient calculation
+   - Daily overview and calorie budget
 
-3. **Produktdatenbank**
-   - Integration von Lebensmitteldatenbanken (z.B. OpenFoodFacts API, USDA FoodData Central)
-   - Eigene Produkte und Rezepte anlegen
-   - Barcode-Scanner für schnelle Produkterfassung
+3. **Product Database**
+   - Integration of food databases (e.g., OpenFoodFacts API, USDA FoodData Central)
+   - Create custom products and recipes
+   - Barcode scanner for quick product capture
 
-4. **Fortschrittstracking**
-   - Gewichtsverlauf (Diagramme)
-   - Körperfett-Tracking (optional)
-   - Zielsetzung und Meilensteine
-   - Motivierende Statistiken
+4. **Progress Tracking**
+   - Weight progress (charts)
+   - Body fat tracking (optional)
+   - Goal setting and milestones
+   - Motivating statistics
 
-## 🎯 Projektziele
+## 🎯 Project Goals
 
-- **Kurzfristig**: Funktionierende Web-App mit Basis-Features (BMI, Kalorien-Tracking)
-- **Mittelfristig**: Integration von Lebensmitteldatenbank und erweiterte Tracking-Features
-- **Langfristig**: Native iOS-App mit Offline-Funktionalität
+- **Short-term**: Functional web app with basic features (BMI, calorie tracking)
+- **Medium-term**: Integration of food database and advanced tracking features
+- **Long-term**: Native iOS app with offline functionality
 
-## 🛠 Technologie-Stack
+## 🛠 Technology Stack
 
-### ✅ Gewählter Stack: Progressive Web App (PWA)
+### ✅ Chosen Stack: Progressive Web App (PWA)
 
-Wir starten mit einer **Web App (React)**, die für Mobile optimiert ist.
+We start with a **web app (React)** optimized for mobile.
 
-- **Frontend**: React (Vite) + PWA Features
+- **Frontend**: React (Vite) + PWA features
 - **Backend**: Node.js + Express
-- **Datenbank**: MongoDB (flexibel für Produktdaten)
-- **Hosting**: 
-  - Backend & DB: Home Server (Docker Container, 24/7 erreichbar)
-  - Frontend: Home Server (Static Serving) oder Vercel
-- **Strategie**: Entwicklung am PC, Nutzung am iPhone als "Add to Home Screen" App. Später Migration zu React Native möglich.
+- **Database**: MongoDB (flexible for product data)
+- **Hosting**:
+  - Backend & DB: Home Server (Docker container, 24/7 accessible)
+  - Frontend: Home Server (static serving) or Vercel
+- **Strategy**: Development on PC, usage on iPhone as "Add to Home Screen" app. Later migration to React Native possible.
 
-## 📊 Benötigte Tools & Services
+## 📊 Required Tools & Services
 
-### Entwicklungs-Tools
-- **IDE**: VS Code, Xcode (für iOS)
+### Development Tools
+- **IDE**: VS Code, Xcode (for iOS)
 - **Version Control**: Git + GitHub
-- **Package Manager**: npm/yarn oder pip
+- **Package Manager**: npm/yarn or pip
 - **Testing**: Jest, Pytest
 
-### APIs & Datenquellen
-- **OpenFoodFacts API** (kostenlos, große Produktdatenbank)
-- **USDA FoodData Central API** (kostenlos, US-fokussiert)
-- **Nutritionix API** (teilweise kostenlos)
+### APIs & Data Sources
+- **OpenFoodFacts API** (free, large product database)
+- **USDA FoodData Central API** (free, US-focused)
+- **Nutritionix API** (partially free)
 - **Edamam Nutrition API** (freemium)
 
 ### Backend & Hosting
-- ****Node.js + Express**
-- **Datenbank**: 
-  - **MongoDB** (Empfohlen für flexible Produktdaten) oder PostgreSQL
-  - Hosting: Docker Container auf Home Server
-- **Hosting**: 
-  - **Home Server**: 24/7 Betrieb, extern erreichbar
+- **Node.js + Express**
+- **Database**:
+  - **MongoDB** (recommended for flexible product data) or PostgreSQL
+  - Hosting: Docker container on Home Server
+- **Hosting**:
+  - **Home Server**: 24/7 operation, externally accessible
   - **Deployment**: Docker / Docker Compose
-  - Vercel/Netlify (für Frontend)
+  - Vercel/Netlify (for frontend)
 
-### Zusätzliche Libraries
-- **Charts/Visualisierung**: Chart.js, Recharts, D3.js
-- **Barcode-Scanner**: QuaggaJS (Web), react-native-camera
-- **Authentifizierung**: Firebase Auth, Supabase Auth
-- **UI-Framework**: 
+### Additional Libraries
+- **Charts/Visualization**: Chart.js, Recharts, D3.js
+- **Barcode Scanner**: QuaggaJS (Web), react-native-camera
+- **Authentication**: Firebase Auth, Supabase Auth
+- **UI Framework**:
   - React: Material-UI, Tailwind CSS, Chakra UI
   - React Native: NativeBase, React Native Paper
 
-## 📅 Entwicklungsplan (Phasen)
-Web App & Infrastructure - 2-3 Wochen
-**Ziel**: Lauffähige, responsive Web App, gehostet auf dem Home Server
+## 📅 Development Plan (Phases)
+
+### Phase 1: MVP Web App & Infrastructure - 2-3 Weeks
+**Goal**: Functional, responsive web app hosted on the home server
 
 - [ ] **Infrastructure**:
     - [ ] Home Server Setup (Docker, Node.js, MongoDB)
-    - [ ] Port-Forwarding / Remote Access sicherstellen
+    - [ ] Ensure Port-Forwarding / Remote Access
 - **Backend (API)**:
-    - [ ] Express Server aufsetzen
-    - [ ] MongoDB Schema für User/Tracking definieren
-    - [ ] API-Endpoints für BMI/Gewicht erstellen
+    - [ ] Set up Express server
+    - [ ] Define MongoDB schema for user/tracking
+    - [ ] Create API endpoints for BMI/weight
 - **Frontend (React Web)**:
-    - [ ] React Projekt mit Vite initialisieren
-    - [ ] Screen: BMI Rechner
-    - [ ] Screen: Gewichts-Input
+    - [ ] Initialize React project with Vite
+    - [ ] Screen: BMI Calculator
+    - [ ] Screen: Weight Input
     - [ ] Mobile-First Styling (CSS/Tailwind)
 
-**Deliverable**: App im Browser auf dem iPhone aufrufbar, Daten auf Home Server.
+**Deliverable**: App accessible in browser on iPhone, data on home server.
 
-### Phase 2: Die Datenbank & Suche - 2-3 Wochen
-**Ziel**: Intelligentes Food-Tracking
+### Phase 2: The Database & Search - 2-3 Weeks
+**Goal**: Smart food tracking
 
-- [ ] Integration OpenFoodFacts API
-- [ ] Produktsuche und Detailansicht
-- [ ] Speichern von konsumierten Lebensmitteln (Kalorien-Log)
-- [ ] Tagesübersicht (Kalorien vs. Budget)
-- [ ] **Barcode-Scanner (Web)**: Integration von `QuaggaJS` oder `html5-qrcode`
+- [ ] Integrate OpenFoodFacts API
+- [ ] Product search and detail view
+- [ ] Save consumed foods (calorie log)
+- [ ] Daily overview (calories vs. budget)
+- [ ] **Barcode Scanner (Web)**: Integrate `QuaggaJS` or `html5-qrcode`
 
-**Deliverable**: Menüs und Produkte tracken.
+**Deliverable**: Track menus and products.
 
-### Phase 3: PWA Features & Visualisierung - 1-2 Wochen
-**Ziel**: "App-Feeling" auf dem iPhone
+### Phase 3: PWA Features & Visualization - 1-2 Weeks
+**Goal**: "App feeling" on iPhone
 
-- [ ] PWA Manifest (Icon, Name, Theme Color)
-- [ ] Service Worker (Offline Support für Basics)
-- [ ] Diagramme für Gewichtsverlauf
-- [ ] BMI-Verlauf / Statistiken
+- [ ] PWA Manifest (icon, name, theme color)
+- [ ] Service Worker (offline support for basics)
+- [ ] Charts for weight progress
+- [ ] BMI progress / statistics
 
-## 🚀 Quick Start - Erste Schritte
+## 🚀 Quick Start - First Steps
 
-### 1. Backend aufsetzen (Home Server / Lokal)
+### 1. Set up Backend (Home Server / Local)
 
 ```bash
-mkdir bodyplan-backend
-cd bodyplan-backend
+mkdir menumate-backend
+cd menumate-backend
 npm init -y
 npm install express mongoose cors dotenv
-# Dockerfile erstellen
+# Create Dockerfile
 ```
 
-### 2. Frontend initialisieren (React)
+### 2. Initialize Frontend (React)
 
 ```bash
-npm create vite@latest bodyplan-frontend -- --template react
-cd bodyplan-frontend
+npm create vite@latest menumate-frontend -- --template react
+cd menumate-frontend
 npm install
 npm install axios react-router-dom
 npm run dev
 ```
 
-## 📚 Ressourcen & Learning
+## 📚 Resources & Learning
 
 ### APIs
 - [OpenFoodFacts API Docs](https://openfoodfacts.github.io/api-documentation/)
@@ -155,18 +156,19 @@ npm run dev
 - [React Docs](https://react.dev/)
 - [Express.js Guide](https://expressjs.com)
 - [Mongoose (MongoDB) Docs](https://mongoosejs.com/)
-- [MDN PWA Guide](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)n
+- [MDN PWA Guide](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+
+### Design Inspiration
 - MyFitnessPal, Yazio
 
+## 🎨 Next Steps
 
-## 🎨 Nächste Schritte
-
-1. **Entscheidung treffen**: Welcher Tech-Stack? (Empfehlung: React + Node.js)
-2. **Projekt aufsetzen**: Grundstruktur erstellen
-3. **Wireframes/Mockups**: Grobe UI-Skizzen der wichtigsten Screens
-4. **MVP entwickeln**: Mit BMI-Rechner und Basis-Tracking starten
-5. **Iterieren**: Testen, Feedback einholen, verbessern
+1. **Decide**: Which tech stack? (Recommendation: React + Node.js)
+2. **Set up project**: Create basic structure
+3. **Wireframes/Mockups**: Rough UI sketches of main screens
+4. **Develop MVP**: Start with BMI calculator and basic tracking
+5. **Iterate**: Test, gather feedback, improve
 
 ---
 
-**Bereit loszulegen?** Sag mir, mit welchem Tech-Stack du starten möchtest, und ich helfe dir beim Setup! 🚀
+**Ready to get started?** Tell me which tech stack you want to start with, and I'll help with the setup! 🚀
