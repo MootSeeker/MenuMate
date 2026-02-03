@@ -66,9 +66,7 @@ const asyncStorageMock = {
   }),
 
   multiMerge: jest.fn(async (keyValuePairs: [string, string][]): Promise<void> => {
-    await Promise.all(
-      keyValuePairs.map(([key, value]) => asyncStorageMock.mergeItem(key, value))
-    );
+    await Promise.all(keyValuePairs.map(([key, value]) => asyncStorageMock.mergeItem(key, value)));
   }),
 };
 

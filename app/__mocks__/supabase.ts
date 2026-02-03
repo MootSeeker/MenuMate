@@ -18,7 +18,7 @@ export const mockSupabaseSession = {
 // Mock query builder for chaining
 const createMockQueryBuilder = () => {
   const builder: Record<string, jest.Mock> = {};
-  
+
   const chainableMethods = [
     'select',
     'insert',
@@ -50,7 +50,7 @@ const createMockQueryBuilder = () => {
 
   // Terminal methods that return data
   builder.then = jest.fn().mockResolvedValue({ data: [], error: null });
-  
+
   return builder;
 };
 
@@ -88,7 +88,9 @@ export const mockSupabaseClient = {
     from: jest.fn().mockReturnValue({
       upload: jest.fn().mockResolvedValue({ data: { path: 'test-path' }, error: null }),
       download: jest.fn().mockResolvedValue({ data: new Blob(), error: null }),
-      getPublicUrl: jest.fn().mockReturnValue({ data: { publicUrl: 'https://example.com/image.jpg' } }),
+      getPublicUrl: jest
+        .fn()
+        .mockReturnValue({ data: { publicUrl: 'https://example.com/image.jpg' } }),
       remove: jest.fn().mockResolvedValue({ data: [], error: null }),
       list: jest.fn().mockResolvedValue({ data: [], error: null }),
     }),

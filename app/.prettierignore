@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+
+# Build outputs
+build/
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
