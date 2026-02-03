@@ -3,11 +3,44 @@
  * Runs before each test file
  */
 
-// Import Jest Native matchers (built into @testing-library/react-native v12.4+)
-import '@testing-library/react-native/extend-expect';
+// Import built-in matchers from @testing-library/react-native
+// Note: In v12.4+, matchers are auto-extended when using the library
 
-// Silence the warning: Animated: `useNativeDriver` is not supported
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+// ============================================
+// Module Mocks
+// ============================================
+
+// Mock AsyncStorage
+jest.mock('@react-native-async-storage/async-storage', () => 
+  require('./__mocks__/asyncStorage').default
+);
+
+// Mock expo-router
+jest.mock('expo-router', () => require('./__mocks__/expoRouter'));
+
+// Mock expo-camera (only if installed)
+try {
+  require.resolve('expo-camera');
+  jest.mock('expo-camera', () => require('./__mocks__/expoCamera'));
+} catch {
+  // expo-camera not installed, skip mock
+}
+
+// Mock @supabase/supabase-js
+jest.mock('@supabase/supabase-js', () => ({
+  createClient: require('./__mocks__/supabase').createClient,
+}));
+
+// ============================================
+// React Native Mocks
+// ============================================
+
+// Mock react-native-reanimated
+jest.mock('react-native-reanimated', () => {
+  const Reanimated = require('react-native-reanimated/mock');
+  Reanimated.default.call = () => {};
+  return Reanimated;
+});
 
 // Mock console.warn for specific warnings we want to suppress in tests
 const originalWarn = console.warn;
