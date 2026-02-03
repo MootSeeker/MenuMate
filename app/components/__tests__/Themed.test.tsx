@@ -17,13 +17,13 @@ describe('Themed Components', () => {
   describe('Text', () => {
     it('renders text content correctly', () => {
       render(<Text>Hello MenuMate</Text>);
-      
+
       expect(screen.getByText('Hello MenuMate')).toBeTruthy();
     });
 
     it('applies custom light color when provided', () => {
       render(<Text lightColor="#FF0000">Colored Text</Text>);
-      
+
       const textElement = screen.getByText('Colored Text');
       expect(textElement).toBeTruthy();
     });
@@ -34,7 +34,7 @@ describe('Themed Components', () => {
           Styled Text
         </Text>
       );
-      
+
       expect(screen.getByTestId('styled-text')).toBeTruthy();
     });
   });
@@ -46,7 +46,7 @@ describe('Themed Components', () => {
           <Text>Child Content</Text>
         </View>
       );
-      
+
       expect(screen.getByTestId('themed-view')).toBeTruthy();
       expect(screen.getByText('Child Content')).toBeTruthy();
     });
@@ -57,7 +57,7 @@ describe('Themed Components', () => {
           <Text>Light View</Text>
         </View>
       );
-      
+
       expect(screen.getByTestId('light-view')).toBeTruthy();
     });
   });

@@ -51,20 +51,20 @@ export const mockCameraRef = {
 };
 
 // Hook mocks
-export const useCameraPermissions = jest.fn().mockReturnValue([
-  mockPermissionResponse,
-  jest.fn().mockResolvedValue(mockPermissionResponse),
-]);
+export const useCameraPermissions = jest
+  .fn()
+  .mockReturnValue([mockPermissionResponse, jest.fn().mockResolvedValue(mockPermissionResponse)]);
 
-export const useMicrophonePermissions = jest.fn().mockReturnValue([
-  mockPermissionResponse,
-  jest.fn().mockResolvedValue(mockPermissionResponse),
-]);
+export const useMicrophonePermissions = jest
+  .fn()
+  .mockReturnValue([mockPermissionResponse, jest.fn().mockResolvedValue(mockPermissionResponse)]);
 
 // Static methods
 export const requestCameraPermissionsAsync = jest.fn().mockResolvedValue(mockPermissionResponse);
 export const getCameraPermissionsAsync = jest.fn().mockResolvedValue(mockPermissionResponse);
-export const requestMicrophonePermissionsAsync = jest.fn().mockResolvedValue(mockPermissionResponse);
+export const requestMicrophonePermissionsAsync = jest
+  .fn()
+  .mockResolvedValue(mockPermissionResponse);
 export const getMicrophonePermissionsAsync = jest.fn().mockResolvedValue(mockPermissionResponse);
 
 // Camera component mock
@@ -72,12 +72,8 @@ export const CameraView = jest.fn().mockImplementation(
   React.forwardRef(({ children, ...props }: { children?: React.ReactNode }, ref) => {
     // Attach mock methods to ref
     React.useImperativeHandle(ref, () => mockCameraRef);
-    
-    return React.createElement(
-      'View',
-      { ...props, testID: 'mock-camera-view' },
-      children
-    );
+
+    return React.createElement('View', { ...props, testID: 'mock-camera-view' }, children);
   })
 );
 
@@ -108,12 +104,9 @@ export const setMockPermissionStatus = (
     canAskAgain,
     expires: 'never' as const,
   };
-  
-  useCameraPermissions.mockReturnValue([
-    response,
-    jest.fn().mockResolvedValue(response),
-  ]);
-  
+
+  useCameraPermissions.mockReturnValue([response, jest.fn().mockResolvedValue(response)]);
+
   requestCameraPermissionsAsync.mockResolvedValue(response);
   getCameraPermissionsAsync.mockResolvedValue(response);
 };

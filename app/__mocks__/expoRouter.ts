@@ -44,11 +44,18 @@ export const useFocusEffect = jest.fn((callback) => {
 // Component mocks
 export const Link = jest.fn(({ children }) => children);
 export const Redirect = jest.fn(() => null);
-export const Stack = jest.fn(({ children }) => children);
-Stack.Screen = jest.fn(({ children }) => children);
 
-export const Tabs = jest.fn(({ children }) => children);
-Tabs.Screen = jest.fn(({ children }) => children);
+// Stack with Screen property
+const StackMock = jest.fn(({ children }) => children);
+export const Stack = Object.assign(StackMock, {
+  Screen: jest.fn(({ children }) => children),
+});
+
+// Tabs with Screen property
+const TabsMock = jest.fn(({ children }) => children);
+export const Tabs = Object.assign(TabsMock, {
+  Screen: jest.fn(({ children }) => children),
+});
 
 export const Slot = jest.fn(({ children }) => children);
 

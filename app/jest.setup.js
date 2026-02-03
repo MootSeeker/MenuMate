@@ -11,8 +11,9 @@
 // ============================================
 
 // Mock AsyncStorage
-jest.mock('@react-native-async-storage/async-storage', () => 
-  require('./__mocks__/asyncStorage').default
+jest.mock(
+  '@react-native-async-storage/async-storage',
+  () => require('./__mocks__/asyncStorage').default
 );
 
 // Mock expo-router
