@@ -6,10 +6,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react-native';
 
-import { Text, View } from '../Themed';
+import { Text, View } from '@/components/Themed';
 
 // Mock useColorScheme
-jest.mock('../useColorScheme', () => ({
+jest.mock('@/components/useColorScheme', () => ({
   useColorScheme: jest.fn().mockReturnValue('light'),
 }));
 
