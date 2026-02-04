@@ -232,7 +232,7 @@ export function useCalorieProgress(): {
   const consumed = data?.summary?.totalCalories ?? 0;
   const goal = data?.goals?.calories ?? 2000;
   const remaining = goal - consumed;
-  const percentage = Math.min(100, Math.round((consumed / goal) * 100));
+  const percentage = goal > 0 ? Math.min(100, Math.round((consumed / goal) * 100)) : 0;
   const isOverGoal = consumed > goal;
 
   return {
@@ -260,7 +260,7 @@ export function useMacroProgress(): {
   const calcProgress = (consumed: number, goal: number) => ({
     consumed,
     goal,
-    percentage: Math.min(100, Math.round((consumed / goal) * 100)),
+    percentage: goal > 0 ? Math.min(100, Math.round((consumed / goal) * 100)) : 0,
   });
 
   return {

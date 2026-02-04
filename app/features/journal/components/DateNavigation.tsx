@@ -77,11 +77,11 @@ function SimpleCalendar({
   const weekDays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
   // Anpassung für Montag als ersten Tag (0 = Montag, 6 = Sonntag)
-  const adjustedStartDay = startingDayOfWeek === 0 ? 6 : startingDayOfWeek - 1;
+  const mondayBasedStartDay = startingDayOfWeek === 0 ? 6 : startingDayOfWeek - 1;
 
   // Kalender-Grid erstellen
   const calendarDays: (number | null)[] = [];
-  for (let i = 0; i < adjustedStartDay; i++) {
+  for (let i = 0; i < mondayBasedStartDay; i++) {
     calendarDays.push(null);
   }
   for (let day = 1; day <= daysInMonth; day++) {

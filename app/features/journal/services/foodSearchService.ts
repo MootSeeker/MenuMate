@@ -13,6 +13,8 @@ import {
   mapCustomFoodRowToCustomFood,
 } from '../types';
 
+const NUTRITION_BASE_AMOUNT = 100;
+
 /**
  * OpenFoodFacts API Response Types
  */
@@ -316,7 +318,7 @@ export async function getRecentFoods(limit: number = 20): Promise<FoodSearchResu
       seen.add(key);
 
       // Nährwerte zurückrechnen auf 100g
-      const factor = row.amount > 0 ? 100 / row.amount : 1;
+      const factor = row.amount > 0 ? NUTRITION_BASE_AMOUNT / row.amount : 1;
 
       uniqueFoods.push({
         id: `recent_${key}`,

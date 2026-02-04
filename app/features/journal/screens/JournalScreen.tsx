@@ -132,7 +132,9 @@ function MacroOverview() {
 
 /**
  * Leerer Zustand für Tage ohne Einträge
- * TODO: Wird in einer späteren Iteration eingesetzt
+ * TODO: Aktivieren, sobald der JournalScreen einen expliziten Empty-State
+ *       anzeigt (wenn für das aktuell ausgewählte Datum keine FoodEntries
+ *       vorhanden sind und statt der MealSections dieser Zustand gerendert wird).
  */
 function _EmptyState({ onAddPress }: { onAddPress: () => void }) {
   return (
@@ -216,12 +218,6 @@ export function JournalScreen() {
     // TODO: Zeige Lösch-Dialog
     console.log('Delete entry:', entry.id);
   }, []);
-
-  // Handler für generisches Hinzufügen (Empty State)
-  // TODO: Wird verwendet wenn EmptyState aktiviert wird
-  const _handleGenericAdd = useCallback(() => {
-    handleAddPress('breakfast');
-  }, [handleAddPress]);
 
   // Refresh Handler
   const handleRefresh = useCallback(() => {
