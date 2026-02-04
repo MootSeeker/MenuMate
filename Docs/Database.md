@@ -448,7 +448,7 @@ flowchart TD
 
 2. **Foreign Keys**: All user-related tables reference `profiles.id`, which in turn references `auth.users.id`.
 
-3. **Cascading Deletes**: When a user is deleted from `auth.users`, all related data is cascaded deleted.
+3. **Cascading Deletes**: User deletion **must** cascade to all related data via foreign key constraints defined with `ON DELETE CASCADE` from user-related tables to `profiles.id` and from `profiles.id` to `auth.users.id` in the SQL migrations.
 
 4. **Input Validation**: Application-level validation before database operations.
 
