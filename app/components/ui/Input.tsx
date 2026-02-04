@@ -1,12 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import {
-  TextInput,
-  TextInputProps,
-  View,
-  Pressable,
-  NativeSyntheticEvent,
-  TextInputFocusEventData,
-} from 'react-native';
+import { TextInput, TextInputProps, View, Pressable } from 'react-native';
 import { cssInterop } from 'nativewind';
 import { Text, Label } from './Text';
 
@@ -62,9 +55,7 @@ function EyeIcon({ visible }: { visible: boolean }) {
 /**
  * Get keyboard type based on input type
  */
-function getKeyboardType(
-  type: InputType
-): TextInputProps['keyboardType'] {
+function getKeyboardType(type: InputType): TextInputProps['keyboardType'] {
   switch (type) {
     case 'email':
       return 'email-address';
@@ -80,9 +71,7 @@ function getKeyboardType(
 /**
  * Get autoCapitalize based on input type
  */
-function getAutoCapitalize(
-  type: InputType
-): TextInputProps['autoCapitalize'] {
+function getAutoCapitalize(type: InputType): TextInputProps['autoCapitalize'] {
   switch (type) {
     case 'email':
     case 'password':
@@ -178,12 +167,12 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
   const isPassword = type === 'password';
   const hasError = Boolean(error);
 
-  const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  const handleFocus: TextInputProps['onFocus'] = (e) => {
     setIsFocused(true);
     onFocus?.(e);
   };
 
-  const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  const handleBlur: TextInputProps['onBlur'] = (e) => {
     setIsFocused(false);
     onBlur?.(e);
   };
@@ -263,9 +252,7 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
             onPress={togglePasswordVisibility}
             className="ml-2 p-1"
             accessibilityRole="button"
-            accessibilityLabel={
-              showPassword ? 'Passwort verbergen' : 'Passwort anzeigen'
-            }
+            accessibilityLabel={showPassword ? 'Passwort verbergen' : 'Passwort anzeigen'}
           >
             <EyeIcon visible={showPassword} />
           </Pressable>
@@ -275,11 +262,7 @@ export const Input = forwardRef<TextInput, InputProps>(function Input(
       </View>
 
       {(error || helperText) && (
-        <Text
-          variant="caption"
-          color={hasError ? 'error' : 'tertiary'}
-          className="ml-1"
-        >
+        <Text variant="caption" color={hasError ? 'error' : 'tertiary'} className="ml-1">
           {error || helperText}
         </Text>
       )}

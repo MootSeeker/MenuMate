@@ -92,10 +92,7 @@ export function Text({
   const colorClass = colorClasses[color];
 
   return (
-    <RNText
-      className={`${variantClass} ${colorClass} ${className}`.trim()}
-      {...props}
-    >
+    <RNText className={`${variantClass} ${colorClass} ${className}`.trim()} {...props}>
       {children}
     </RNText>
   );

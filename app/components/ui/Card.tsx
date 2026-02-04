@@ -35,10 +35,8 @@ export interface CardProps extends ViewProps {
  * Variant-specific styles
  */
 const variantClasses: Record<CardVariant, string> = {
-  elevated:
-    'bg-surface dark:bg-gray-800 shadow-card border-0',
-  outlined:
-    'bg-surface dark:bg-gray-800 border border-border dark:border-gray-700',
+  elevated: 'bg-surface dark:bg-gray-800 shadow-card border-0',
+  outlined: 'bg-surface dark:bg-gray-800 border border-border dark:border-gray-700',
   flat: 'bg-background-secondary dark:bg-gray-800/50 border-0',
 };
 
@@ -144,13 +142,7 @@ export interface CardHeaderProps {
   children?: React.ReactNode;
 }
 
-export function CardHeader({
-  title,
-  subtitle,
-  action,
-  className = '',
-  children,
-}: CardHeaderProps) {
+export function CardHeader({ title, subtitle, action, className = '', children }: CardHeaderProps) {
   if (children) {
     return <View className={`pb-3 ${className}`}>{children}</View>;
   }
@@ -158,13 +150,9 @@ export function CardHeader({
   return (
     <View className={`flex-row items-center justify-between pb-3 ${className}`}>
       <View className="flex-1">
-        {title && (
-          <View className="text-heading-4 text-foreground dark:text-gray-50">
-            {title}
-          </View>
-        )}
+        {title && <View className="text-heading-4 text-foreground dark:text-gray-50">{title}</View>}
         {subtitle && (
-          <View className="text-body-sm text-foreground-secondary dark:text-gray-400 mt-0.5">
+          <View className="mt-0.5 text-body-sm text-foreground-secondary dark:text-gray-400">
             {subtitle}
           </View>
         )}
@@ -200,11 +188,7 @@ export interface CardFooterProps {
 
 export function CardFooter({ children, className = '' }: CardFooterProps) {
   return (
-    <View
-      className={`flex-row items-center justify-end pt-3 gap-2 ${className}`}
-    >
-      {children}
-    </View>
+    <View className={`flex-row items-center justify-end gap-2 pt-3 ${className}`}>{children}</View>
   );
 }
 

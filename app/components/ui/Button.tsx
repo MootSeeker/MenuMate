@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Pressable,
-  PressableProps,
-  ActivityIndicator,
-  View,
-} from 'react-native';
+import { Pressable, PressableProps, ActivityIndicator, View } from 'react-native';
 import { cssInterop } from 'nativewind';
 import { Text } from './Text';
 
@@ -16,12 +11,7 @@ cssInterop(ActivityIndicator, { className: 'style' });
 /**
  * Button variant types
  */
-export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'outline'
-  | 'ghost'
-  | 'destructive';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
 
 /**
  * Button size types
@@ -52,43 +42,39 @@ export interface ButtonProps extends Omit<PressableProps, 'children'> {
 /**
  * Base styles for all buttons
  */
-const baseClasses =
-  'flex-row items-center justify-center rounded-lg active:opacity-80';
+const baseClasses = 'flex-row items-center justify-center rounded-lg active:opacity-80';
 
 /**
  * Variant-specific styles
  */
-const variantClasses: Record<
-  ButtonVariant,
-  { container: string; text: string; spinner: string }
-> = {
-  primary: {
-    container: 'bg-primary-500 dark:bg-primary-600',
-    text: 'text-white',
-    spinner: '#ffffff',
-  },
-  secondary: {
-    container: 'bg-secondary-500 dark:bg-secondary-600',
-    text: 'text-white',
-    spinner: '#ffffff',
-  },
-  outline: {
-    container:
-      'bg-transparent border-2 border-primary-500 dark:border-primary-400',
-    text: 'text-primary-500 dark:text-primary-400',
-    spinner: '#22c55e',
-  },
-  ghost: {
-    container: 'bg-transparent',
-    text: 'text-foreground dark:text-gray-100',
-    spinner: '#111827',
-  },
-  destructive: {
-    container: 'bg-error-500 dark:bg-error-600',
-    text: 'text-white',
-    spinner: '#ffffff',
-  },
-};
+const variantClasses: Record<ButtonVariant, { container: string; text: string; spinner: string }> =
+  {
+    primary: {
+      container: 'bg-primary-500 dark:bg-primary-600',
+      text: 'text-white',
+      spinner: '#ffffff',
+    },
+    secondary: {
+      container: 'bg-secondary-500 dark:bg-secondary-600',
+      text: 'text-white',
+      spinner: '#ffffff',
+    },
+    outline: {
+      container: 'bg-transparent border-2 border-primary-500 dark:border-primary-400',
+      text: 'text-primary-500 dark:text-primary-400',
+      spinner: '#22c55e',
+    },
+    ghost: {
+      container: 'bg-transparent',
+      text: 'text-foreground dark:text-gray-100',
+      spinner: '#111827',
+    },
+    destructive: {
+      container: 'bg-error-500 dark:bg-error-600',
+      text: 'text-white',
+      spinner: '#ffffff',
+    },
+  };
 
 /**
  * Size-specific styles
@@ -178,19 +164,12 @@ export function Button({
       {...props}
     >
       {loading ? (
-        <ActivityIndicator
-          size="small"
-          color={variantStyle.spinner}
-          className="mr-2"
-        />
+        <ActivityIndicator size="small" color={variantStyle.spinner} className="mr-2" />
       ) : leftIcon ? (
         <View className="mr-1">{leftIcon}</View>
       ) : null}
 
-      <Text
-        variant="label"
-        className={`${variantStyle.text} ${sizeStyle.text} font-semibold`}
-      >
+      <Text variant="label" className={`${variantStyle.text} ${sizeStyle.text} font-semibold`}>
         {children}
       </Text>
 
@@ -263,11 +242,7 @@ export function IconButton({
       }}
       {...props}
     >
-      {loading ? (
-        <ActivityIndicator size="small" color={variantStyle.spinner} />
-      ) : (
-        icon
-      )}
+      {loading ? <ActivityIndicator size="small" color={variantStyle.spinner} /> : icon}
     </Pressable>
   );
 }
