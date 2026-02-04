@@ -156,7 +156,7 @@ erDiagram
 | `goal_reached` | Daily calorie goal reached | +20 |
 | `streak_bonus` | Streak milestone (7, 30, 100 days) | +50/+100/+500 |
 | `weight_logged` | User logged weight | +10 |
-| `decay` | Inactivity penalty | -5 per day |
+| `decay` | Inactivity penalty, applied for each full calendar day without any logged meals or weight entries | -5 per inactive day |
 
 ## Table Definitions
 
