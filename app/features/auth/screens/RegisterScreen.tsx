@@ -48,13 +48,17 @@ type RegistrationFormData = z.infer<typeof registrationSchema>;
 // ============================================
 
 /**
- * Custom resolver for Zod v4 with react-hook-form
+ * Generic resolver for Zod v4 with react-hook-form
+ * Can be reused across the application for any Zod schema
+ *
+ * Note: For full type-safety across the app, consider moving this
+ * to a shared lib/forms/zodResolver.ts module.
  */
-function zodResolver(schema: z.ZodType<RegistrationFormData>) {
-  return async (data: RegistrationFormData) => {
+function zodResolver<TSchema extends z.ZodTypeAny>(schema: TSchema) {
+  return async (data: unknown) => {
     const result = schema.safeParse(data);
     if (result.success) {
-      return { values: result.data, errors: {} };
+      return { values: result.data as z.infer<TSchema>, errors: {} };
     }
 
     const errors: Record<string, { type: string; message: string }> = {};

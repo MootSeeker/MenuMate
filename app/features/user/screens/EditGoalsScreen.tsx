@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Text, Card, Button, Input } from '@/components/ui';
 import { useOnboardingStore } from '@/features/onboarding';
-import { calculateAllCalories, GOAL_ADJUSTMENTS } from '@/features/user/utils';
+import { calculateAllCalories, calculateAge, GOAL_ADJUSTMENTS } from '@/features/user/utils';
 
 // ============================================
 // TYPES
@@ -72,19 +72,6 @@ function validateInputs(
   }
 
   return errors;
-}
-
-/**
- * Calculate age from birth date
- */
-function calculateAge(birthDate: Date): number {
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
 }
 
 // ============================================
@@ -152,7 +139,10 @@ export function EditGoalsScreen() {
 
       Alert.alert('Erfolg', `Dein Kalorienbedarf wurde neu berechnet: ${goalCalories} kcal`);
     } catch {
-      Alert.alert('Fehler', 'Die Berechnung konnte nicht durchgeführt werden.');
+      Alert.alert(
+        'Fehler bei der Berechnung',
+        'Dein Kalorienbedarf konnte nicht neu berechnet werden. Bitte überprüfe deine Profilangaben und versuche es erneut.'
+      );
     }
   }, [data, setCalculatedValues]);
 

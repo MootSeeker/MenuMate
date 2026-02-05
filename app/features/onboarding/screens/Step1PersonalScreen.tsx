@@ -13,7 +13,7 @@ import { useRouter } from 'expo-router';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 
 import { Text, Card, Button } from '@/components/ui';
-import type { Gender } from '@/features/user/utils';
+import { calculateAge, type Gender } from '@/features/user/utils';
 
 import { OnboardingLayout } from '../components';
 import { useOnboardingStore } from '../stores';
@@ -44,19 +44,6 @@ const MAX_AGE = 120;
 // ============================================
 // HELPERS
 // ============================================
-
-/**
- * Calculate age from birth date
- */
-function calculateAge(birthDate: Date): number {
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-}
 
 /**
  * Validate birth date
@@ -99,12 +86,12 @@ export function Step1PersonalScreen() {
   const [dateError, setDateError] = useState<string | null>(null);
   const [genderError, setGenderError] = useState<string | null>(null);
 
-  // Default date for picker (18 years ago)
-  const defaultDate = new Date();
-  defaultDate.setFullYear(defaultDate.getFullYear() - 25);
+  // Suggested initial date for picker (25 years ago)
+  const suggestedBirthDate = new Date();
+  suggestedBirthDate.setFullYear(suggestedBirthDate.getFullYear() - 25);
 
-  // Get current birth date or default
-  const currentBirthDate = data.birthDate ? new Date(data.birthDate) : defaultDate;
+  // Get current birth date or suggested initial date
+  const currentBirthDate = data.birthDate ? new Date(data.birthDate) : suggestedBirthDate;
 
   // Calculate min/max dates
   const maxDate = new Date();
