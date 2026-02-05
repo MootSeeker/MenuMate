@@ -7,8 +7,8 @@
  * @see Issue #23 - [PROFILE-001] Profile Screen UI
  */
 
-import { useCallback, useState, useEffect } from 'react';
-import { View, ScrollView, RefreshControl, Pressable, Alert } from 'react-native';
+import { useCallback, useState } from 'react';
+import { View, ScrollView, RefreshControl, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -135,8 +135,7 @@ export function ProfileScreen() {
   });
 
   // Calculate level progress
-  const levelProgress =
-    gamificationData.points / gamificationData.pointsToNextLevel;
+  const levelProgress = gamificationData.points / gamificationData.pointsToNextLevel;
 
   // Handle refresh
   const handleRefresh = useCallback(async () => {
@@ -271,18 +270,8 @@ export function ProfileScreen() {
         {/* Body Data Section */}
         <ProfileSectionCard title="📊 Körperdaten">
           <View className="flex-row gap-4">
-            <StatItem
-              icon="📏"
-              label="Größe"
-              value={onboardingData.heightCm ?? '—'}
-              unit="cm"
-            />
-            <StatItem
-              icon="⚖️"
-              label="Gewicht"
-              value={onboardingData.weightKg ?? '—'}
-              unit="kg"
-            />
+            <StatItem icon="📏" label="Größe" value={onboardingData.heightCm ?? '—'} unit="cm" />
+            <StatItem icon="⚖️" label="Gewicht" value={onboardingData.weightKg ?? '—'} unit="kg" />
           </View>
         </ProfileSectionCard>
 

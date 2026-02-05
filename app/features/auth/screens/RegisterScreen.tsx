@@ -215,7 +215,7 @@ export function RegisterScreen() {
 
             {/* Auth Error */}
             {authError && (
-              <View className="mb-4 rounded-lg bg-error-50 p-3 dark:bg-error-950">
+              <View className="dark:bg-error-950 mb-4 rounded-lg bg-error-50 p-3">
                 <Text variant="body-sm" className="text-error-700 dark:text-error-300">
                   {authError}
                 </Text>

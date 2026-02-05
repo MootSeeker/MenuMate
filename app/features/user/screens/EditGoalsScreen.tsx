@@ -12,9 +12,9 @@ import { View, ScrollView, KeyboardAvoidingView, Platform, Alert } from 'react-n
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Text, Card, Button, Input, Divider } from '@/components/ui';
+import { Text, Card, Button, Input } from '@/components/ui';
 import { useOnboardingStore } from '@/features/onboarding';
-import { calculateAllCalories, GOAL_ADJUSTMENTS, type Goal } from '@/features/user/utils';
+import { calculateAllCalories, GOAL_ADJUSTMENTS } from '@/features/user/utils';
 
 // ============================================
 // TYPES
@@ -93,7 +93,7 @@ function calculateAge(birthDate: Date): number {
 
 export function EditGoalsScreen() {
   const router = useRouter();
-  const { data, setGoal, setCalculatedValues } = useOnboardingStore();
+  const { data, setCalculatedValues } = useOnboardingStore();
 
   // Form state
   const [calories, setCalories] = useState(data.dailyCalorieGoal?.toString() ?? '');
@@ -122,12 +122,16 @@ export function EditGoalsScreen() {
 
   // Handle recalculate TDEE
   const handleRecalculateTDEE = useCallback(() => {
-    if (!data.gender || !data.birthDate || !data.heightCm || !data.weightKg || !data.activityLevel) {
-      Alert.alert(
-        'Fehlende Daten',
-        'Bitte vervollständige zuerst dein Profil im Onboarding.',
-        [{ text: 'OK' }]
-      );
+    if (
+      !data.gender ||
+      !data.birthDate ||
+      !data.heightCm ||
+      !data.weightKg ||
+      !data.activityLevel
+    ) {
+      Alert.alert('Fehlende Daten', 'Bitte vervollständige zuerst dein Profil im Onboarding.', [
+        { text: 'OK' },
+      ]);
       return;
     }
 
@@ -147,7 +151,7 @@ export function EditGoalsScreen() {
       setCalculatedValues(result.tdee, goalCalories);
 
       Alert.alert('Erfolg', `Dein Kalorienbedarf wurde neu berechnet: ${goalCalories} kcal`);
-    } catch (error) {
+    } catch {
       Alert.alert('Fehler', 'Die Berechnung konnte nicht durchgeführt werden.');
     }
   }, [data, setCalculatedValues]);
@@ -172,7 +176,7 @@ export function EditGoalsScreen() {
       Alert.alert('Gespeichert', 'Deine Ziele wurden aktualisiert.', [
         { text: 'OK', onPress: () => router.back() },
       ]);
-    } catch (error) {
+    } catch {
       Alert.alert('Fehler', 'Die Ziele konnten nicht gespeichert werden.');
     } finally {
       setIsLoading(false);
@@ -286,15 +290,9 @@ export function EditGoalsScreen() {
                 Basierend auf {calories} kcal (30% Protein, 40% Kohlenhydrate, 30% Fett):
               </Text>
               <View className="mt-2 flex-row justify-between">
-                <Text variant="body-sm">
-                  🥩 Protein: {calculatedMacros.protein}g
-                </Text>
-                <Text variant="body-sm">
-                  🍞 Carbs: {calculatedMacros.carbs}g
-                </Text>
-                <Text variant="body-sm">
-                  🥑 Fett: {calculatedMacros.fat}g
-                </Text>
+                <Text variant="body-sm">🥩 Protein: {calculatedMacros.protein}g</Text>
+                <Text variant="body-sm">🍞 Carbs: {calculatedMacros.carbs}g</Text>
+                <Text variant="body-sm">🥑 Fett: {calculatedMacros.fat}g</Text>
               </View>
             </Card>
           )}

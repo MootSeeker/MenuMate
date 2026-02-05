@@ -181,7 +181,12 @@ export function Step1PersonalScreen() {
   const displayedAge = data.birthDate ? calculateAge(new Date(data.birthDate)) : null;
 
   return (
-    <OnboardingLayout currentStep={1} onNext={handleNext} nextDisabled={!canProceed} showBack={false}>
+    <OnboardingLayout
+      currentStep={1}
+      onNext={handleNext}
+      nextDisabled={!canProceed}
+      showBack={false}
+    >
       <View className="flex-1 py-4">
         {/* Title */}
         <Text variant="heading-2" className="mb-2 text-center">

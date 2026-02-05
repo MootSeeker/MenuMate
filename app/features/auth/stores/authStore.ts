@@ -53,8 +53,7 @@ function formatAuthError(error: AuthError): string {
     'Invalid login credentials': 'Ungültige E-Mail oder Passwort',
     'Email not confirmed': 'Bitte bestätige zuerst deine E-Mail-Adresse',
     'User already registered': 'Diese E-Mail ist bereits registriert',
-    'Password should be at least 6 characters':
-      'Das Passwort muss mindestens 6 Zeichen lang sein',
+    'Password should be at least 6 characters': 'Das Passwort muss mindestens 6 Zeichen lang sein',
     'Unable to validate email address: invalid format': 'Bitte gib eine gültige E-Mail-Adresse ein',
     'Signup requires a valid password': 'Bitte gib ein gültiges Passwort ein',
   };
@@ -68,7 +67,7 @@ function formatAuthError(error: AuthError): string {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       // Initial state
       user: null,
       session: null,
@@ -159,7 +158,7 @@ export const useAuthStore = create<AuthState>()(
           });
 
           return { success: true };
-        } catch (err) {
+        } catch {
           const errorMessage = 'Anmeldung fehlgeschlagen';
           set({ isLoading: false, error: errorMessage });
           return { success: false, error: errorMessage };
@@ -201,7 +200,7 @@ export const useAuthStore = create<AuthState>()(
           });
 
           return { success: true };
-        } catch (err) {
+        } catch {
           const errorMessage = 'Registrierung fehlgeschlagen';
           set({ isLoading: false, error: errorMessage });
           return { success: false, error: errorMessage };
