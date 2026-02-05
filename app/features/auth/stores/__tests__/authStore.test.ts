@@ -12,7 +12,7 @@ const mockGetSession = jest.fn();
 const mockSignInWithPassword = jest.fn();
 const mockSignUp = jest.fn();
 const mockSignOut = jest.fn();
-const mockOnAuthStateChange = jest.fn(() => ({
+const mockOnAuthStateChange = jest.fn((_callback: (_event: string, session: unknown) => void) => ({
   data: { subscription: { unsubscribe: jest.fn() } },
 }));
 
@@ -24,7 +24,8 @@ jest.mock('@/lib/supabase', () => ({
         mockSignInWithPassword(params),
       signUp: (params: { email: string; password: string }) => mockSignUp(params),
       signOut: () => mockSignOut(),
-      onAuthStateChange: (callback: unknown) => mockOnAuthStateChange(callback),
+      onAuthStateChange: (callback: (_event: string, session: unknown) => void) =>
+        mockOnAuthStateChange(callback),
     },
   },
 }));
@@ -150,7 +151,7 @@ describe('useAuthStore', () => {
 
       const { result } = renderHook(() => useAuthStore());
 
-      let signInResult;
+      let signInResult: { success: boolean; error?: string } | undefined;
       await act(async () => {
         signInResult = await result.current.signIn('test@example.com', 'wrongpassword');
       });
@@ -210,7 +211,7 @@ describe('useAuthStore', () => {
 
       const { result } = renderHook(() => useAuthStore());
 
-      let signUpResult;
+      let signUpResult: { success: boolean; error?: string } | undefined;
       await act(async () => {
         signUpResult = await result.current.signUp('existing@example.com', 'password123');
       });

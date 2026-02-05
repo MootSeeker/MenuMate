@@ -84,7 +84,7 @@ function getActivityLabel(level: string | null): string {
 function ProfileSectionCard({ title, children }: ProfileSection) {
   return (
     <Card variant="outlined" padding="md" className="mb-4">
-      <Text variant="label-lg" className="mb-3">
+      <Text variant="label" className="mb-3">
         {title}
       </Text>
       {children}
@@ -206,14 +206,14 @@ export function ProfileScreen() {
           {/* Level Progress */}
           <View className="mb-4">
             <View className="mb-2 flex-row items-center justify-between">
-              <Text variant="body-md" weight="medium">
+              <Text variant="body-md" className="font-medium">
                 Level {gamificationData.level}
               </Text>
               <Text variant="body-sm" color="secondary">
                 {gamificationData.points} / {gamificationData.pointsToNextLevel} Punkte
               </Text>
             </View>
-            <ProgressBar progress={levelProgress} variant="primary" size="md" />
+            <ProgressBar value={levelProgress} variant="primary" size="md" />
           </View>
 
           {/* Stats Row */}
@@ -235,7 +235,7 @@ export function ProfileScreen() {
             {/* Daily Calories */}
             <View className="flex-row items-center justify-between">
               <Text variant="body-md">Tägliches Kalorienziel</Text>
-              <Text variant="body-md" weight="semibold">
+              <Text variant="body-md" className="font-semibold">
                 {onboardingData.dailyCalorieGoal ?? '—'} kcal
               </Text>
             </View>
@@ -245,7 +245,7 @@ export function ProfileScreen() {
             {/* TDEE */}
             <View className="flex-row items-center justify-between">
               <Text variant="body-md">Kalorienbedarf (TDEE)</Text>
-              <Text variant="body-md" weight="semibold">
+              <Text variant="body-md" className="font-semibold">
                 {onboardingData.calculatedTDEE ?? '—'} kcal
               </Text>
             </View>
@@ -255,7 +255,7 @@ export function ProfileScreen() {
             {/* Activity Level */}
             <View className="flex-row items-center justify-between">
               <Text variant="body-md">Aktivitätslevel</Text>
-              <Text variant="body-md" weight="semibold">
+              <Text variant="body-md" className="font-semibold">
                 {getActivityLabel(onboardingData.activityLevel)}
               </Text>
             </View>

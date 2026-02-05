@@ -198,7 +198,7 @@ export function Step1PersonalScreen() {
 
         {/* Gender Selection */}
         <View className="mb-6">
-          <Text variant="label-lg" className="mb-3">
+          <Text variant="label" className="mb-3">
             Geschlecht
           </Text>
           <View className="flex-row gap-3">
@@ -226,8 +226,9 @@ export function Step1PersonalScreen() {
                     <Text className="mb-1 text-2xl">{option.icon}</Text>
                     <Text
                       variant="body-sm"
-                      weight={isSelected ? 'semibold' : 'regular'}
-                      className={isSelected ? 'text-primary-600 dark:text-primary-400' : ''}
+                      className={
+                        isSelected ? 'font-semibold text-primary-600 dark:text-primary-400' : ''
+                      }
                     >
                       {option.label}
                     </Text>
@@ -245,7 +246,7 @@ export function Step1PersonalScreen() {
 
         {/* Birth Date Selection */}
         <View className="mb-6">
-          <Text variant="label-lg" className="mb-3">
+          <Text variant="label" className="mb-3">
             Geburtsdatum
           </Text>
 

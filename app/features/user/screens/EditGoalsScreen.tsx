@@ -213,7 +213,7 @@ export function EditGoalsScreen() {
         >
           {/* Calories Section */}
           <Card variant="outlined" padding="md" className="mb-4">
-            <Text variant="label-lg" className="mb-4">
+            <Text variant="label" className="mb-4">
               🎯 Kalorienziel
             </Text>
 
@@ -243,7 +243,7 @@ export function EditGoalsScreen() {
 
           {/* Macros Section */}
           <Card variant="outlined" padding="md" className="mb-4">
-            <Text variant="label-lg" className="mb-2">
+            <Text variant="label" className="mb-2">
               📊 Makronährstoffe (optional)
             </Text>
             <Text variant="body-sm" color="secondary" className="mb-4">
@@ -282,8 +282,8 @@ export function EditGoalsScreen() {
 
           {/* Recommended Macros Info */}
           {calculatedMacros && (
-            <Card variant="filled" padding="md" className="mb-4">
-              <Text variant="label-md" className="mb-2">
+            <Card variant="flat" padding="md" className="mb-4">
+              <Text variant="label" className="mb-2">
                 💡 Empfohlene Makroverteilung
               </Text>
               <Text variant="body-sm" color="secondary">

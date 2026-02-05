@@ -247,7 +247,7 @@ export function RegisterScreen() {
 
           {/* Password Requirements Info */}
           <View className="mt-6 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-            <Text variant="body-sm" weight="medium" className="mb-2">
+            <Text variant="body-sm" className="mb-2 font-medium">
               Passwort-Anforderungen:
             </Text>
             <Text variant="body-sm" color="secondary">

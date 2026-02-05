@@ -21,7 +21,6 @@ export {
   type TDEEParams,
   type GoalCaloriesParams,
   type CalorieCalculationResult,
-  type MacroDistribution,
 } from './utils';
 
 // Screens
