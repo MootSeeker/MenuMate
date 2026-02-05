@@ -22,7 +22,12 @@ export {
 export { OnboardingProgress, OnboardingLayout } from './components';
 
 // Screens
-export { Step2BodyScreen, Step3ActivityScreen, Step4GoalScreen } from './screens';
+export {
+  Step1PersonalScreen,
+  Step2BodyScreen,
+  Step3ActivityScreen,
+  Step4GoalScreen,
+} from './screens';
 
 // Services
 export {
