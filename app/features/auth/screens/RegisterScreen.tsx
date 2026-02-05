@@ -15,6 +15,8 @@ import { z } from 'zod';
 
 import { Text, Input, Button, Card } from '@/components/ui';
 import { useAuthStore } from '../stores';
+import { PasswordStrengthIndicator } from '../components';
+import { zodResolver } from '../utils/zodResolver';
 
 // ============================================
 // VALIDATION SCHEMA
@@ -42,38 +44,6 @@ const registrationSchema = z
   });
 
 type RegistrationFormData = z.infer<typeof registrationSchema>;
-
-// ============================================
-// CUSTOM RESOLVER
-// ============================================
-
-/**
- * Generic resolver for Zod v4 with react-hook-form
- * Can be reused across the application for any Zod schema
- *
- * Note: For full type-safety across the app, consider moving this
- * to a shared lib/forms/zodResolver.ts module.
- */
-function zodResolver<TSchema extends z.ZodTypeAny>(schema: TSchema) {
-  return async (data: unknown) => {
-    const result = schema.safeParse(data);
-    if (result.success) {
-      return { values: result.data as z.infer<TSchema>, errors: {} };
-    }
-
-    const errors: Record<string, { type: string; message: string }> = {};
-    for (const issue of result.error.issues) {
-      const path = issue.path.join('.');
-      if (!errors[path]) {
-        errors[path] = {
-          type: issue.code,
-          message: issue.message,
-        };
-      }
-    }
-    return { values: {}, errors };
-  };
-}
 
 // ============================================
 // COMPONENT
@@ -184,17 +154,20 @@ export function RegisterScreen() {
               control={control}
               name="password"
               render={({ field: { onChange, onBlur, value } }) => (
-                <Input
-                  label="Passwort"
-                  type="password"
-                  placeholder="Mindestens 8 Zeichen"
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  error={errors.password?.message}
-                  autoComplete="new-password"
-                  containerClassName="mb-4"
-                />
+                <View>
+                  <Input
+                    label="Passwort"
+                    type="password"
+                    placeholder="Mindestens 8 Zeichen"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    error={errors.password?.message}
+                    autoComplete="new-password"
+                    containerClassName="mb-2"
+                  />
+                  <PasswordStrengthIndicator password={value} showFeedback />
+                </View>
               )}
             />
 
@@ -206,6 +179,7 @@ export function RegisterScreen() {
                 <Input
                   label="Passwort bestätigen"
                   type="password"
+                  mt-4
                   placeholder="Passwort wiederholen"
                   value={value}
                   onChangeText={onChange}

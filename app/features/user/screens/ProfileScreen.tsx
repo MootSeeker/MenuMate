@@ -154,11 +154,11 @@ export function ProfileScreen() {
         style: 'destructive',
         onPress: async () => {
           await signOut();
-          router.replace('/auth/login');
+          // Navigation happens automatically via Auth Guard
         },
       },
     ]);
-  }, [signOut, router]);
+  }, [signOut]);
 
   // Handle edit goals navigation
   const handleEditGoals = useCallback(() => {
