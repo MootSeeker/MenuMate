@@ -37,6 +37,16 @@ module.exports = {
 
   coverageReporters: ['text', 'lcov', 'html'],
 
+  // Coverage thresholds - CI will fail if coverage drops below these values
+  coverageThreshold: {
+    global: {
+      statements: 60,
+      branches: 50,
+      functions: 60,
+      lines: 60,
+    },
+  },
+
   // Clear mocks between tests
   clearMocks: true,
 
