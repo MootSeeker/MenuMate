@@ -8,8 +8,9 @@ import { act, renderHook } from '@testing-library/react-native';
 import { useOnboardingStore } from '../onboardingStore';
 
 // Mock AsyncStorage
-jest.mock('@react-native-async-storage/async-storage', () =>
-  require('../../../../__mocks__/asyncStorage').default
+jest.mock(
+  '@react-native-async-storage/async-storage',
+  () => require('../../../../__mocks__/asyncStorage').default
 );
 
 describe('useOnboardingStore', () => {
@@ -170,10 +171,10 @@ describe('useOnboardingStore', () => {
       const { result } = renderHook(() => useOnboardingStore());
 
       act(() => {
-        result.current.setActivityLevel('moderate');
+        result.current.setActivityLevel('moderately_active');
       });
 
-      expect(result.current.data.activityLevel).toBe('moderate');
+      expect(result.current.data.activityLevel).toBe('moderately_active');
     });
 
     it('should set goal', () => {
@@ -239,7 +240,7 @@ describe('useOnboardingStore', () => {
       const { result } = renderHook(() => useOnboardingStore());
 
       act(() => {
-        result.current.setActivityLevel('active');
+        result.current.setActivityLevel('very_active');
       });
 
       expect(result.current.canProceedFromStep(3)).toBe(true);
@@ -269,7 +270,7 @@ describe('useOnboardingStore', () => {
 
     it('should calculate age correctly', () => {
       const { result } = renderHook(() => useOnboardingStore());
-      
+
       // Set birthdate to exactly 30 years ago
       const thirtyYearsAgo = new Date();
       thirtyYearsAgo.setFullYear(thirtyYearsAgo.getFullYear() - 30);
@@ -287,7 +288,7 @@ describe('useOnboardingStore', () => {
 
     it('should handle birthday not yet passed this year', () => {
       const { result } = renderHook(() => useOnboardingStore());
-      
+
       // Set birthdate to later this year (or next year if late in year)
       const futureThisYear = new Date();
       futureThisYear.setFullYear(futureThisYear.getFullYear() - 25);
@@ -359,7 +360,7 @@ describe('useOnboardingStore', () => {
 
       // Step 3: Activity Level
       act(() => {
-        result.current.setActivityLevel('moderate');
+        result.current.setActivityLevel('moderately_active');
         result.current.nextStep();
       });
       expect(result.current.currentStep).toBe(4);
@@ -377,7 +378,7 @@ describe('useOnboardingStore', () => {
         birthDate: expect.any(Date),
         heightCm: 178,
         weightKg: 75,
-        activityLevel: 'moderate',
+        activityLevel: 'moderately_active',
         goal: 'maintain',
         calculatedTDEE: 2400,
         dailyCalorieGoal: 2400,

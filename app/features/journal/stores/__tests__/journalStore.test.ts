@@ -15,8 +15,9 @@ import {
 } from '../journalStore';
 
 // Mock AsyncStorage
-jest.mock('@react-native-async-storage/async-storage', () =>
-  require('../../../../__mocks__/asyncStorage').default
+jest.mock(
+  '@react-native-async-storage/async-storage',
+  () => require('../../../../__mocks__/asyncStorage').default
 );
 
 describe('Journal Store Helper Functions', () => {
@@ -156,7 +157,7 @@ describe('useJournalStore', () => {
     it('should not allow future dates', () => {
       const { result } = renderHook(() => useJournalStore());
       const originalDate = result.current.selectedDate;
-      
+
       const futureDate = new Date();
       futureDate.setDate(futureDate.getDate() + 5);
 

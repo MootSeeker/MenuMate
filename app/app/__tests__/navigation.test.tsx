@@ -44,14 +44,14 @@ describe('Navigation Integration', () => {
     it('should identify public routes correctly', () => {
       const publicRoutes = ['auth', 'login', 'register'];
       const currentSegment = 'auth';
-      
+
       expect(publicRoutes.includes(currentSegment)).toBe(true);
     });
 
     it('should identify protected routes correctly', () => {
       const publicRoutes = ['auth', 'login', 'register'];
       const currentSegment = '(tabs)';
-      
+
       expect(publicRoutes.includes(currentSegment)).toBe(false);
     });
   });
@@ -66,7 +66,7 @@ describe('Navigation Integration', () => {
 
       const isProtectedRoute = true;
       const shouldRedirectToLogin = !mockUseAuthStore().isAuthenticated && isProtectedRoute;
-      
+
       expect(shouldRedirectToLogin).toBe(true);
     });
 
@@ -79,7 +79,7 @@ describe('Navigation Integration', () => {
 
       const isProtectedRoute = true;
       const shouldRedirectToLogin = !mockUseAuthStore().isAuthenticated && isProtectedRoute;
-      
+
       expect(shouldRedirectToLogin).toBe(false);
     });
 
@@ -92,7 +92,7 @@ describe('Navigation Integration', () => {
 
       const isProtectedRoute = false;
       const shouldRedirectToLogin = !mockUseAuthStore().isAuthenticated && isProtectedRoute;
-      
+
       expect(shouldRedirectToLogin).toBe(false);
     });
 
@@ -105,7 +105,7 @@ describe('Navigation Integration', () => {
 
       const isAuthRoute = true;
       const shouldRedirectToHome = mockUseAuthStore().isAuthenticated && isAuthRoute;
-      
+
       expect(shouldRedirectToHome).toBe(true);
     });
   });
@@ -122,10 +122,9 @@ describe('Navigation Integration', () => {
         isCompleted: false,
       });
 
-      const shouldShowOnboarding = 
-        mockUseAuthStore().isAuthenticated && 
-        !mockUseOnboardingStore().isCompleted;
-      
+      const shouldShowOnboarding =
+        mockUseAuthStore().isAuthenticated && !mockUseOnboardingStore().isCompleted;
+
       expect(shouldShowOnboarding).toBe(true);
     });
 
@@ -140,10 +139,9 @@ describe('Navigation Integration', () => {
         isCompleted: true,
       });
 
-      const shouldShowOnboarding = 
-        mockUseAuthStore().isAuthenticated && 
-        !mockUseOnboardingStore().isCompleted;
-      
+      const shouldShowOnboarding =
+        mockUseAuthStore().isAuthenticated && !mockUseOnboardingStore().isCompleted;
+
       expect(shouldShowOnboarding).toBe(false);
     });
   });
@@ -158,14 +156,14 @@ describe('Navigation Integration', () => {
       ];
 
       expect(tabConfig).toHaveLength(4);
-      expect(tabConfig.map(t => t.name)).toEqual(['journal', 'index', 'two', 'profile']);
+      expect(tabConfig.map((t) => t.name)).toEqual(['journal', 'index', 'two', 'profile']);
     });
 
     it('should identify active tab correctly', () => {
       const currentPath = '/journal';
       const tabs = ['journal', 'index', 'two', 'profile'];
-      
-      const activeTab = tabs.find(tab => currentPath.includes(tab));
+
+      const activeTab = tabs.find((tab) => currentPath.includes(tab));
       expect(activeTab).toBe('journal');
     });
   });
@@ -177,7 +175,7 @@ describe('Navigation Integration', () => {
       const [, pathAndParams] = deepLink.split('://');
       const [path, queryString] = pathAndParams.split('?');
       const params = new URLSearchParams(queryString);
-      
+
       expect(path).toBe('journal');
       expect(params.get('date')).toBe('2026-02-06');
     });
@@ -185,7 +183,7 @@ describe('Navigation Integration', () => {
     it('should parse profile section deep links correctly', () => {
       const deepLink = 'menumate://profile/edit-goals';
       const [, pathPart] = deepLink.split('://');
-      
+
       expect(pathPart).toBe('profile/edit-goals');
       expect(pathPart.startsWith('profile/')).toBe(true);
     });
@@ -195,7 +193,7 @@ describe('Navigation Integration', () => {
       const [, pathAndParams] = deepLink.split('://');
       const [path, queryString] = pathAndParams.split('?');
       const params = new URLSearchParams(queryString);
-      
+
       expect(path).toBe('journal/add');
       expect(params.get('meal')).toBe('breakfast');
     });
@@ -205,9 +203,7 @@ describe('Navigation Integration', () => {
 describe('Navigation State Persistence', () => {
   it('should preserve navigation state across app restarts', () => {
     const savedState = {
-      routes: [
-        { name: '(tabs)', state: { routes: [{ name: 'journal' }] } }
-      ],
+      routes: [{ name: '(tabs)', state: { routes: [{ name: 'journal' }] } }],
       index: 0,
     };
 
