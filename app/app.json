@@ -1,20 +1,22 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "MenuMate",
+    "slug": "menumate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "app",
+    "scheme": "menumate",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "owner": "mootseeker",
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mootseeker.menumate"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +24,19 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.mootseeker.menumate"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "YOUR_EAS_PROJECT_ID"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/YOUR_EAS_PROJECT_ID"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     },
     "web": {
       "bundler": "metro",
