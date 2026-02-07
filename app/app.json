@@ -27,14 +27,6 @@
       "predictiveBackGestureEnabled": false,
       "package": "com.mootseeker.menumate"
     },
-    "extra": {
-      "eas": {
-        "projectId": "YOUR_EAS_PROJECT_ID"
-      }
-    },
-    "updates": {
-      "url": "https://u.expo.dev/YOUR_EAS_PROJECT_ID"
-    },
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -49,6 +41,15 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "842ad62c-1744-47e8-ad58-8efc1ecc0aaa"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/842ad62c-1744-47e8-ad58-8efc1ecc0aaa"
     }
   }
 }
